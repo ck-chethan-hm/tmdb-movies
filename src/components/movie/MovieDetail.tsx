@@ -3,12 +3,8 @@ import { fetchMovieDetail } from "../../api";
 import { MovieType } from "../../util/interface";
 import { useParams } from "react-router-dom";
 import Header from "../header/Header";
-import {
-  faHeart as solidHeart,
-  faHeart as regularHeart,
-} from "@fortawesome/free-solid-svg-icons";
+
 import "./movie.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavorite, removeFavorite } from "../../store/favouriteSlice";
 

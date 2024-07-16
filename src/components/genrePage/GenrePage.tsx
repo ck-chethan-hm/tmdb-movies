@@ -26,7 +26,7 @@ const GenrePage = () => {
       }
     };
     getMoviesByGenere();
-  }, []);
+  }, [genre]);
 
   return (
     <>

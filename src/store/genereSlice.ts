@@ -1,6 +1,6 @@
 // favoritesSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { GenreType, MovieType } from '../util/interface';
+import { GenreType } from '../util/interface';
 
 interface GenereState {
   selectedGenere: GenreType;
