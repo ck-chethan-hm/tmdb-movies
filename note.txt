@@ -1,0 +1,55 @@
+Task: TMDB Movies
+1. Login page:
+1. User email (email validation)
+2. Password (Password validation-> at least 1 Upper, 1 Lower, 1 special char, 1 number and min 6 character length)
+3. Login button
+4. Once valid user email and password then you need to store it in the local storage with key name of User_ID and value should be (user_email+password)
+2. Home page: Once successfully login and check local storage whether User_ID exist or not, if it is exist only you need display below items.
+1. Header: Having App title(Clickable and should navigate to home on other screens) in left side and My Favourites & user logo in right side(on clicking show logout option in pop over).
+1. Clicking on My favourites then it should redirect to My favourites page.
+2. Clicking on logout it should clear the local storage User_ID and redirect back to login page.
+2. Sub Header: Display all genres like (Action, comedy..etc) as a buttons or chips (Refer API document for genre api).
+1. On clicking any genre it should redirect to respective genre page.
+3. Carousel: Show list of popular movies in the carousel.(Refer API document for popular movies).
+4. On clicking any movie from carousel then it should redirect to movie detail page.
+5. Below Carousel display a title called All movies. (Refer API document for all trending movies).
+6. Display all movies with their image as well as movie name and rating and favourite icon on the image.
+1. On clicking fav toggle icon it should fill with red colour or un filled(If already movie is added to favourites) and should add/remove that movie in the redux store under myFavorites.
+2. On clicking the image it should navigate to movie details page.
+3. Movie Detail Page:
+1. Display movie poster on top.
+2. Below the movie poster left side display Movie title and rating and right side show favourite icon.
+1. On clicking favourite icon it should turn in to red collar and also save that movie in the redux under myFavourite.
+3. Below that display overview for that movie.
+4. Genre page:
+1. Display genre title:
+1. Display all list of movies for that particular genre by taking genre id from url. (Refer API document for Genre list by id).
+2. Display movie name and rating on movie image and favourite icon and do the same as 2.6 steps
+5. My Favourites:
+1. Display all favourites movies which are stored in redux and do the same as 2.6 steps.
+
+
+
+API Info:
+
+Genre API:
+https://api.themoviedb.org/3/genre/movie/list?language=en
+
+Popular list:
+https://api.themoviedb.org/3/movie/popular?language=en-US&page=1
+
+Trending movies:
+https://api.themoviedb.org/3/trending/movie/day?language=en-US
+
+Movie Detail:
+https://api.themoviedb.org/3/movie/{movie_id}?language=en-US
+
+Genre list:
+https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres={genre_id}
+ 
+
+
+
+Token
+
+eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNTc0N2FhY2RiMGY5NGMzZDZmYWQxMmJmN2QzNGQzMCIsIm5iZiI6MTcyMDU1MTM1NS45NTQzODQsInN1YiI6IjY0YjRlYTAyZTBjYTdmMDE0NDJhZTFhMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.j6h_wbXPT3AD16sbuIdk-lagOdThRgSCLHcm4t03dQM
