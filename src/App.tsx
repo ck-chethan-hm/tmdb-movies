@@ -5,6 +5,8 @@ import HomePage from "./components/homePage/HomePage";
 import MyFavourites from "./components/myFavourites/MyFavourites";
 import GenrePage from "./components/genrePage/GenrePage";
 import MovieDetail from "./components/movie/MovieDetail";
+import AllTrendingMovies from "./components/trendingMovies/AllTredingMovies";
+import AllPopularMovies from "./components/corousel/AllPopularMovies";
 
 const App = () => {
   return (
@@ -40,6 +42,22 @@ const App = () => {
           element={
             <CheckUser>
               <MovieDetail />
+            </CheckUser>
+          }
+        />
+        <Route
+          path="/allTredingMovies"
+          element={
+            <CheckUser>
+              <AllTrendingMovies />
+            </CheckUser>
+          }
+        />
+        <Route
+          path="/allPopularMovies"
+          element={
+            <CheckUser>
+              <AllPopularMovies />
             </CheckUser>
           }
         />

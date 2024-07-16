@@ -1,0 +1,75 @@
+.login-container {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-container {
+  width: max-content;
+  height: max-content;
+  padding: 20px;
+  margin: auto;
+  font-size: xx-large;
+  font-weight: 900;
+  color: tomato;
+}
+
+.login-div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 20rem;
+  height: max-content;
+  background-color: antiquewhite;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.login-label {
+  font-family: "Amazon Ember", Arial, sans-serif;
+  font-size: large;
+  font-weight: 700;
+}
+
+.login-input-container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 2px;
+  padding-bottom: 2px;
+  width: 20rem;
+}
+
+.login-input-lable {
+  font-weight: 700;
+  font-size: 13px;
+  color: #111;
+  font-weight: 700;
+  line-height: 19px;
+  font-family: "Amazon Ember", Arial, sans-serif;
+}
+
+.login-input {
+  background-color: #fff;
+  height: 31px;
+  padding: 3px 7px;
+  line-height: normal;
+  border: 1px solid #a6a6a6;
+  border-top-color: #949494;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 1px 0 rgba(0, 0, 0, 0.07) inset;
+  outline: 0;
+}
+
+.login-button {
+  margin-top: 1rem;
+  width: 100%;
+  height: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px 0 rgba(213, 217, 217, 0.5);
+
+  background-color: #f0c14b;
+  outline: none;
+}

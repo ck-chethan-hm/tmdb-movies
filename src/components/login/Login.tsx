@@ -1,5 +1,7 @@
+import { Button } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./login.css";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -45,31 +47,36 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          {emailError && <p style={{ color: "red" }}>{emailError}</p>}
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {passwordError && <p style={{ color: "red" }}>{passwordError}</p>}
-        </div>
-        <button type="button" onClick={handleLogin}>
-          Login
-        </button>
-      </form>
+    <div className="login-container">
+      <div className="logo-container">TMDB Movies</div>
+      <div className="login-div">
+        <div className="login-label">Login</div>
+        <form onSubmit={(e) => e.preventDefault()}>
+          <div className="login-input-container">
+            <div className="login-input-lable">Email:</div>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="login-input"
+            />
+            {emailError && <p style={{ color: "red" }}>{emailError}</p>}
+          </div>
+          <div className="login-input-container">
+            <div className="login-input-lable">Password:</div>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="login-input"
+            />
+            {passwordError && <p style={{ color: "red" }}>{passwordError}</p>}
+          </div>
+          <button className="login-button" type="submit" onClick={handleLogin}>
+            Login
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,87 @@
+.homepage-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  height: 40px;
+  background-color: tomato;
+  margin: 0;
+}
+
+.tmdb-logo {
+  display: flex;
+  font-size: 1.5rem;
+  line-height: 2.8rem;
+  color: white;
+}
+
+.header-rightbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-favLable {
+  cursor: pointer;
+  color: rgb(235, 228, 228);
+  font-family: "Amazon Ember", Arial, sans-serif;
+  font-size: medium;
+  font-weight: 500;
+}
+
+.header-userIcon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: azure;
+  cursor: pointer;
+}
+
+.logout-popup {
+  position: absolute;
+  right: 0;
+  background: white;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.logout-button {
+  width: max-content;
+  padding: 6px;
+  background-color: aliceblue;
+  color: tomato;
+  border: 1px solid tomato;
+  cursor: pointer;
+}
+
+.genres-header {
+  padding: 6px 6px 0 6px;
+  font-family: "Amazon Ember", Arial, sans-serif;
+  font-weight: 600;
+  font-size: medium;
+}
+
+.subHeader-generes {
+  background-color: rgb(173, 173, 164);
+  padding: 0.25rem 0.75rem;
+  border-radius: 8px;
+  color: white;
+  width: max-content;
+  height: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: small;
+  font-family: "Amazon Ember", Arial, sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.genres-subheader {
+  display: flex;
+  gap: 6px;
+  padding: 6px;
+  flex-wrap: wrap;
+}

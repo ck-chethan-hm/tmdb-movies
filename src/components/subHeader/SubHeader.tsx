@@ -4,7 +4,7 @@ import { fetchGenres } from "../../api";
 import { GenreType } from "../../util/interface";
 import { useDispatch } from "react-redux";
 import { selectGenere } from "../../store/genereSlice";
-
+import "../header/header.css";
 const SubHeader = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -28,21 +28,21 @@ const SubHeader = () => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        gap: "10px",
-        padding: "10px",
-        flexWrap: "wrap",
-      }}
-    >
-      {genres &&
-        genres.map((genre: GenreType) => (
-          <button key={genre.id} onClick={() => subHeaderClickHandler(genre)}>
-            {genre.name}
-          </button>
-        ))}
-    </div>
+    <>
+      <div className="genres-header">All Popular Genres</div>
+      <div className="genres-subheader">
+        {genres &&
+          genres.map((genre: GenreType) => (
+            <div
+              className="subHeader-generes"
+              key={genre.id}
+              onClick={() => subHeaderClickHandler(genre)}
+            >
+              {genre.name}
+            </div>
+          ))}
+      </div>
+    </>
   );
 };
 

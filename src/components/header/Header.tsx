@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./header.css";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -11,53 +12,36 @@ const Header = () => {
   };
 
   return (
-    <header
-      style={{
-        width: "100%",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        padding: "10px",
-        height: "40px",
-        backgroundColor: "red",
-        margin: "0",
-      }}
-    >
-      <div className="">
-        <h1 onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
-          TMDB
-        </h1>
+    <div className="homepage-header">
+      <div
+        className="tmdb-logo"
+        onClick={() => navigate("/")}
+        style={{ cursor: "pointer" }}
+      >
+        TMDB Movies
       </div>
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <button onClick={() => navigate("/favourites")}>My Favourites</button>
+      <div className="header-rightbar">
+        <div
+          className="header-favLable"
+          onClick={() => navigate("/favourites")}
+        >
+          My Favourites
+        </div>
         <div style={{ position: "relative" }}>
-          <img
-            src="path/to/user-logo.png"
-            alt="User Logo"
+          <div
             onClick={() => setShowLogout(!showLogout)}
-            style={{
-              cursor: "pointer",
-              width: "40px",
-              height: "40px",
-              borderRadius: "50%",
-            }}
+            className="header-userIcon"
           />
           {showLogout && (
-            <div
-              style={{
-                position: "absolute",
-                right: 0,
-                background: "white",
-                border: "1px solid black",
-                borderRadius: "5px",
-              }}
-            >
-              <button onClick={handleLogout}>Logout</button>
+            <div className="logout-popup">
+              <button className="logout-button" onClick={handleLogout}>
+                Logout
+              </button>
             </div>
           )}
         </div>
       </div>
-    </header>
+    </div>
   );
 };
 
