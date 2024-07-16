@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/tmdb-movies/static/css/main.295478cf.css",
-    "main.js": "/tmdb-movies/static/js/main.30eab9b1.js",
-    "static/js/453.b3ee3f41.chunk.js": "/tmdb-movies/static/js/453.b3ee3f41.chunk.js",
-    "index.html": "/tmdb-movies/index.html",
-    "main.295478cf.css.map": "/tmdb-movies/static/css/main.295478cf.css.map",
-    "main.30eab9b1.js.map": "/tmdb-movies/static/js/main.30eab9b1.js.map",
-    "453.b3ee3f41.chunk.js.map": "/tmdb-movies/static/js/453.b3ee3f41.chunk.js.map"
+    "main.css": "/static/css/main.295478cf.css",
+    "main.js": "/static/js/main.c4be160c.js",
+    "static/js/453.b3ee3f41.chunk.js": "/static/js/453.b3ee3f41.chunk.js",
+    "index.html": "/index.html",
+    "main.295478cf.css.map": "/static/css/main.295478cf.css.map",
+    "main.c4be160c.js.map": "/static/js/main.c4be160c.js.map",
+    "453.b3ee3f41.chunk.js.map": "/static/js/453.b3ee3f41.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.295478cf.css",
-    "static/js/main.30eab9b1.js"
+    "static/js/main.c4be160c.js"
   ]
 }
