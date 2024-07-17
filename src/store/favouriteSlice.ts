@@ -2,7 +2,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { MovieType } from '../util/interface';
 
-interface FavoritesState {
+export interface FavoritesState {
   myFavorites: MovieType[];
 }
 

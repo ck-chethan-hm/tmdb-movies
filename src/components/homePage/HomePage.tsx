@@ -2,8 +2,9 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../header/Header";
 import SubHeader from "../subHeader/SubHeader";
-import Carousel from "../corousel/Corousel";
 import TrendingMovies from "../trendingMovies/TrendingMovies";
+import PopularMovies from "../corousel/PopularMovies";
+import "../corousel/carousel.css";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -16,10 +17,12 @@ const HomePage = () => {
   }, [navigate]);
 
   return (
-    <div>
+    <div className="homePageContainer">
       <Header />
       <SubHeader />
-      <Carousel />
+      <div className="popularMovies">
+        <PopularMovies />
+      </div>
       <TrendingMovies />
     </div>
   );

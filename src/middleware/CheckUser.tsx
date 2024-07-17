@@ -1,7 +1,11 @@
-import { useEffect } from "react";
+import { ReactElement, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const CheckUser = ({ children }: any) => {
+interface CheckUserProps {
+  children: ReactElement;
+}
+
+const CheckUser = ({ children }: CheckUserProps) => {
   const navigate = useNavigate();
 
   useEffect(() => {

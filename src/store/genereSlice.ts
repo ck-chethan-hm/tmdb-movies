@@ -2,7 +2,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { GenreType } from '../util/interface';
 
-interface GenereState {
+export interface GenereState {
   selectedGenere: GenreType;
 }
 
@@ -21,4 +21,5 @@ const genereSlice = createSlice({
 });
 
 export const { selectGenere } = genereSlice.actions;
+
 export default genereSlice.reducer;

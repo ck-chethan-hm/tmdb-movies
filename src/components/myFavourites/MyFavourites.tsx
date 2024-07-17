@@ -3,10 +3,11 @@ import { MovieType } from "../../util/interface";
 import MovieCard from "../movie/MovieCard";
 import "../movie/movie.css";
 import Header from "../header/Header";
+import { RootState } from "../../store/store";
 
 const MyFavourites = () => {
   const favorites: MovieType[] =
-    useSelector((state: any) => state.favorites.myFavorites) || [];
+    useSelector((state: RootState) => state.favorites.myFavorites) || [];
 
   return (
     <>

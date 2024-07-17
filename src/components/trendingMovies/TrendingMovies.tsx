@@ -24,7 +24,7 @@ const TrendingMovies = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <div className="trendingMoviesHeadingContainer">
         <div className="trending-movie-lable">All Trending Movies</div>
         <FontAwesomeIcon
@@ -38,7 +38,7 @@ const TrendingMovies = () => {
           <MovieCard movie={movie} key={movie.id} />
         ))}
       </div>
-    </div>
+    </>
   );
 };
 

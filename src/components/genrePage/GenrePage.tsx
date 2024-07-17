@@ -6,11 +6,12 @@ import { useSelector } from "react-redux";
 import MovieCard from "../movie/MovieCard";
 import "../movie/movie.css";
 import Header from "../header/Header";
+import { RootState } from "../../store/store";
 
 const GenrePage = () => {
   const { genre } = useParams();
   const genereSelected: GenreType = useSelector(
-    (state: any) => state.generes.selectedGenere
+    (state: RootState) => state.generes.selectedGenere
   );
   const [movies, setMovies] = useState<MovieType[]>([]);
 

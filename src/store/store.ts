@@ -1,7 +1,7 @@
 // store.ts
 import { configureStore } from '@reduxjs/toolkit';
-import favoritesReducer from './favouriteSlice';
-import genereReducer from './genereSlice';
+import favoritesReducer, { FavoritesState } from './favouriteSlice';
+import genereReducer, { GenereState } from './genereSlice';
 
 const store = configureStore({
   reducer: {
@@ -9,5 +9,10 @@ const store = configureStore({
     generes: genereReducer
   },
 });
+
+export interface RootState {
+  favorites: FavoritesState;
+  generes: GenereState
+}
 
 export default store;
