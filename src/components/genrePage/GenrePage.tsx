@@ -5,7 +5,6 @@ import { fetchMoviesByGenere } from "../../api";
 import { useSelector } from "react-redux";
 import MovieCard from "../movie/MovieCard";
 import "../movie/movie.css";
-import Header from "../header/Header";
 import { RootState } from "../../store/store";
 
 const GenrePage = () => {
@@ -19,7 +18,6 @@ const GenrePage = () => {
     const getMoviesByGenere = async () => {
       try {
         const moviesData = await fetchMoviesByGenere(genre);
-        console.log(moviesData);
 
         setMovies(moviesData.results);
       } catch (error) {
@@ -31,7 +29,6 @@ const GenrePage = () => {
 
   return (
     <>
-      <Header />
       {genereSelected ? (
         <div className="selectedGenresHeading">{`${genereSelected.name} Movies`}</div>
       ) : null}

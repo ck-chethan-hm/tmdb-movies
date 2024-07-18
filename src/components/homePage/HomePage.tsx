@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Header from "../header/Header";
 import SubHeader from "../subHeader/SubHeader";
 import TrendingMovies from "../trendingMovies/TrendingMovies";
 import PopularMovies from "../corousel/PopularMovies";
@@ -18,7 +17,6 @@ const HomePage = () => {
 
   return (
     <div className="homePageContainer">
-      <Header />
       <SubHeader />
       <div className="popularMovies">
         <PopularMovies />

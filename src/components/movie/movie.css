@@ -107,9 +107,8 @@
   display: flex;
   flex-direction: row;
   background-color: antiquewhite;
-  width: calc(100vw - 16px);
-  height: calc(100vh - 80px);
   gap: 8px;
+  height: calc(100vh - 2.5rem);
 }
 
 .moviedetail-title {

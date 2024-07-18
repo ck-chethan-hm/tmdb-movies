@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { MovieType } from "../../util/interface";
 import { fetchPopularMovies } from "../../api";
 import MovieCard from "../movie/MovieCard";
-import Header from "../header/Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLessThan as lesserThan } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
@@ -17,8 +16,6 @@ const AllPopularMovies = () => {
     const fetchAllPopularMovies = async () => {
       try {
         const moviesData = await fetchPopularMovies();
-        console.log(moviesData);
-
         setMovies(moviesData.results);
       } catch (error) {
         console.error(error);
@@ -29,7 +26,6 @@ const AllPopularMovies = () => {
 
   return (
     <>
-      <Header />
       <div className="allArendingMoviesHeadingContainer">
         <FontAwesomeIcon
           icon={lesserThan}

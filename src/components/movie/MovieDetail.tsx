@@ -1,21 +1,21 @@
-import { useState, useEffect } from "react";
 import { fetchMovieDetail } from "../../api";
 import { MovieType } from "../../util/interface";
 import { useParams } from "react-router-dom";
-import Header from "../header/Header";
-
-import "./movie.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavorite, removeFavorite } from "../../store/favouriteSlice";
+import useFetchMovies from "../../customHooks/useFetchMovies";
+import { RootState } from "../../store/store";
+import "./movie.css";
 
 const MovieDetail = () => {
+  const { movieId } = useParams();
   const dispatch = useDispatch();
   const favorites: MovieType[] =
-    useSelector((state: any) => state.favorites.myFavorites) || [];
+    useSelector((state: RootState) => state.favorites.myFavorites) || [];
 
-  const [movie, setMovie] = useState<MovieType | null>(null);
-  const { movieId } = useParams();
-  console.log(movieId);
+  const { data, error, loading } = useFetchMovies({
+    apiToCall: () => fetchMovieDetail(movieId),
+  });
 
   const isFavourite = (movieId: number) => {
     return favorites.some((movie: MovieType) => movie.id === movieId);
@@ -29,53 +29,37 @@ const MovieDetail = () => {
     }
   };
 
-  useEffect(() => {
-    const fetchMovie = async () => {
-      try {
-        const response = await fetchMovieDetail(movieId);
-        console.log(response);
-
-        setMovie(response);
-      } catch (error) {
-        console.error("Error fetching movie:", error);
-      }
-    };
-    fetchMovie();
-  }, [movieId]);
-
-  if (!movie) {
-    return <div>Loading...</div>;
-  }
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {JSON.stringify(error)}</p>;
 
   return (
-    <>
-      <Header />
+    <div>
       <div className="movieDetail-container">
         <img
           className="movieDetail-image"
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-          alt={movie.title}
+          src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
+          alt={data.title}
         />
         <div className="movieDetail-right">
-          <div className="moviedetail-title">{movie.title}</div>
-          <div className="movieDetail-overview">{movie.overview}</div>
+          <div className="moviedetail-title">{data.title}</div>
+          <div className="movieDetail-overview">{data.overview}</div>
           <div className="movieDetail-date">
             <span className="movieDetail-headLabel">Release Date: </span>
-            <span>{movie.release_date}</span>
+            <span>{data.release_date}</span>
           </div>
           <div className="movieDetail-rating">
             <span className="movieDetail-headLabel">Rating: </span>
             <span>
-              {movie.vote_average} ({movie.vote_count} votes)
+              {data.vote_average} ({data.vote_count} votes)
             </span>
           </div>
 
           <button
             className="movieDetail-favouriteButton"
             type="submit"
-            onClick={() => handleToggleFavorite(movie)}
+            onClick={() => handleToggleFavorite(data)}
             style={
-              isFavourite(movie.id)
+              isFavourite(data.id)
                 ? {
                     backgroundColor: "tomato",
                     color: "white",
@@ -83,11 +67,11 @@ const MovieDetail = () => {
                 : {}
             }
           >
-            {isFavourite(movie.id) ? "Remove Favourite" : "Add to Favourite"}
+            {isFavourite(data.id) ? "Remove Favourite" : "Add to Favourite"}
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

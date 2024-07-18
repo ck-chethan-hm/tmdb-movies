@@ -7,10 +7,14 @@ import GenrePage from "./components/genrePage/GenrePage";
 import MovieDetail from "./components/movie/MovieDetail";
 import AllTrendingMovies from "./components/trendingMovies/AllTredingMovies";
 import AllPopularMovies from "./components/corousel/AllPopularMovies";
+import Header from "./components/header/Header";
 
 const App = () => {
   return (
     <Router>
+      <CheckUser>
+        <Header />
+      </CheckUser>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route
