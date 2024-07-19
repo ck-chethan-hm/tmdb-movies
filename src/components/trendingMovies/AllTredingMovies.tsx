@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { MovieType } from "../../util/interface";
 import { fetchTrendingMovies } from "../../api";
 import MovieCard from "../movie/MovieCard";
@@ -6,23 +5,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLessThan as lesserThan } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import "../movie/movie.css";
+import useFetchMovies from "../../customHooks/useFetchMovies";
 
 const AllTrendingMovies = () => {
   const navigate = useNavigate();
 
-  const [movies, setMovies] = useState<MovieType[]>([]);
-
-  useEffect(() => {
-    const fetchAllTrendingMovies = async () => {
-      try {
-        const moviesData = await fetchTrendingMovies();
-        setMovies(moviesData.results);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchAllTrendingMovies();
-  }, []);
+  const { data, loading, error } = useFetchMovies({
+    apiToCall: fetchTrendingMovies,
+  });
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {JSON.stringify(error)}</p>;
 
   return (
     <>
@@ -35,7 +27,7 @@ const AllTrendingMovies = () => {
         <div className="trending-movie-lable">All Trending Movies</div>
       </div>
       <div className="allTredingMovies-container">
-        {movies.map((movie) => (
+        {data.results.map((movie: MovieType) => (
           <MovieCard movie={movie} key={movie.id} />
         ))}
       </div>

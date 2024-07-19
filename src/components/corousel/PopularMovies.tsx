@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchPopularMovies } from "../../api";
 import { MovieType } from "../../util/interface";
@@ -6,36 +6,31 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLessThan as lesserThan } from "@fortawesome/free-solid-svg-icons";
 import { faGreaterThan as greaterThan } from "@fortawesome/free-solid-svg-icons";
 import "./carousel.css";
+import useFetchMovies from "../../customHooks/useFetchMovies";
 
 const PopularMovies = () => {
-  const [movies, setMovies] = useState<MovieType[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const getPopularMovies = async () => {
-      try {
-        const moviesData = await fetchPopularMovies();
-        setMovies(moviesData.results);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getPopularMovies();
-  }, []);
+  const { data, loading, error } = useFetchMovies({
+    apiToCall: fetchPopularMovies,
+  });
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? movies.length - 1 : prevIndex - 1
+      prevIndex === 0 ? data.results.length - 1 : prevIndex - 1
     );
   };
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === movies.length - 1 ? 0 : prevIndex + 1
+      prevIndex === data.results.length - 1 ? 0 : prevIndex + 1
     );
   };
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {JSON.stringify(error)}</p>;
 
   return (
     <>
@@ -56,29 +51,35 @@ const PopularMovies = () => {
             overflow: "hidden",
           }}
         >
-          {movies.map((movie) => (
-            <>
+          {data.results.map((movie: MovieType) => (
+            <React.Fragment key={movie.id}>
               <img
                 key={movie.id}
                 src={
-                  movies[currentIndex] &&
-                  `https://image.tmdb.org/t/p/w500${movies[currentIndex].backdrop_path}`
+                  data.results[currentIndex] &&
+                  `https://image.tmdb.org/t/p/w500${data.results[currentIndex].backdrop_path}`
                 }
                 alt=""
                 className="popularMovieCarousel-image"
-                onClick={() => navigate(`/movie/${movies[currentIndex].id}`)}
+                onClick={() =>
+                  navigate(`/movie/${data.results[currentIndex].id}`)
+                }
                 style={{ translate: `${-100 * currentIndex}%` }}
               />
               <div
                 className="popularMovieCarousel-caption"
-                onClick={() => navigate(`/movie/${movies[currentIndex].id}`)}
+                onClick={() =>
+                  navigate(`/movie/${data.results[currentIndex].id}`)
+                }
               >
-                <h3 style={{ color: "white" }}>{movies[currentIndex].title}</h3>
+                <h3 style={{ color: "white" }}>
+                  {data.results[currentIndex].title}
+                </h3>
                 <p style={{ color: "white" }}>
-                  {movies[currentIndex].overview}
+                  {data.results[currentIndex].overview}
                 </p>
               </div>
-            </>
+            </React.Fragment>
           ))}
         </div>
 

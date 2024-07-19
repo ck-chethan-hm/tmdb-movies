@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import SubHeader from "../subHeader/SubHeader";
 import TrendingMovies from "../trendingMovies/TrendingMovies";
@@ -8,7 +8,7 @@ import "../corousel/carousel.css";
 const HomePage = () => {
   const navigate = useNavigate();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const userId = localStorage.getItem("User_ID");
     if (!userId) {
       navigate("/login");
@@ -16,7 +16,7 @@ const HomePage = () => {
   }, [navigate]);
 
   return (
-    <div className="homePageContainer">
+    <div className="homePageContainer" style={{ marginBottom: "1rem" }}>
       <SubHeader />
       <div className="popularMovies">
         <PopularMovies />

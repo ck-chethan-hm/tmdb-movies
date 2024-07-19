@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { GenreType, MovieType } from "../../util/interface";
 import { fetchMoviesByGenere } from "../../api";
@@ -6,26 +5,19 @@ import { useSelector } from "react-redux";
 import MovieCard from "../movie/MovieCard";
 import "../movie/movie.css";
 import { RootState } from "../../store/store";
+import useFetchMovies from "../../customHooks/useFetchMovies";
 
 const GenrePage = () => {
   const { genre } = useParams();
   const genereSelected: GenreType = useSelector(
     (state: RootState) => state.generes.selectedGenere
   );
-  const [movies, setMovies] = useState<MovieType[]>([]);
 
-  useEffect(() => {
-    const getMoviesByGenere = async () => {
-      try {
-        const moviesData = await fetchMoviesByGenere(genre);
-
-        setMovies(moviesData.results);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getMoviesByGenere();
-  }, [genre]);
+  const { data, loading, error } = useFetchMovies({
+    apiToCall: () => fetchMoviesByGenere(genre),
+  });
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {JSON.stringify(error)}</p>;
 
   return (
     <>
@@ -33,7 +25,7 @@ const GenrePage = () => {
         <div className="selectedGenresHeading">{`${genereSelected.name} Movies`}</div>
       ) : null}
       <div className="moviesByGenres-container">
-        {movies.map((movie) => (
+        {data.results.map((movie: MovieType) => (
           <MovieCard movie={movie} key={movie.id} />
         ))}
       </div>
