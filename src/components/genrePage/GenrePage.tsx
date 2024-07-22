@@ -1,18 +1,13 @@
-import { useParams } from "react-router-dom";
-import { GenreType, MovieType } from "../../util/interface";
+import { useLocation, useParams } from "react-router-dom";
+import { MovieType } from "../../util/interface";
 import { fetchMoviesByGenere } from "../../api";
-import { useSelector } from "react-redux";
 import MovieCard from "../movie/MovieCard";
-import "../movie/movie.css";
-import { RootState } from "../../store/store";
 import useFetchMovies from "../../customHooks/useFetchMovies";
+import "../movie/movie.css";
 
 const GenrePage = () => {
   const { genre } = useParams();
-  const genereSelected: GenreType = useSelector(
-    (state: RootState) => state.generes.selectedGenere
-  );
-
+  const { state } = useLocation();
   const { data, loading, error } = useFetchMovies({
     apiToCall: () => fetchMoviesByGenere(genre),
   });
@@ -21,8 +16,8 @@ const GenrePage = () => {
 
   return (
     <>
-      {genereSelected ? (
-        <div className="selectedGenresHeading">{`${genereSelected.name} Movies`}</div>
+      {state ? (
+        <div className="selectedGenresHeading">{`${state} Movies`}</div>
       ) : null}
       <div className="moviesByGenres-container">
         {data.results.map((movie: MovieType) => (
