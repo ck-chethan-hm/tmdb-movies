@@ -1,0 +1,8 @@
+import { render, screen } from "@testing-library/react";
+import SubHeader from "./SubHeader";
+
+test("When Render Subheader", () => {
+  render(<SubHeader />);
+  const subheaderHeader = screen.getByText(/All Popular Genres/i);
+  expect(subheaderHeader).toBeInTheDocument();
+});

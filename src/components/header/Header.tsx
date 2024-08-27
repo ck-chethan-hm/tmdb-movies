@@ -31,10 +31,15 @@ const Header = () => {
           <div
             onClick={() => setShowLogout(!showLogout)}
             className="header-userIcon"
+            data-testid="logout-headerIcon"
           />
           {showLogout && (
             <div className="logout-popup">
-              <button className="logout-button" onClick={handleLogout}>
+              <button
+                data-testid="logout-button"
+                className="logout-button"
+                onClick={handleLogout}
+              >
                 Logout
               </button>
             </div>

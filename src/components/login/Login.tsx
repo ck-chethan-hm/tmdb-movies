@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
 
-const LoginPage = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -49,11 +49,14 @@ const LoginPage = () => {
     <div className="login-container">
       <div className="logo-container">TMDB Movies</div>
       <div className="login-div">
-        <div className="login-label">Login</div>
+        <div className="login-label" data-testid="loginHeader">
+          Login
+        </div>
         <form onSubmit={(e) => e.preventDefault()}>
           <div className="login-input-container">
             <div className="login-input-lable">Email:</div>
             <input
+              data-testid="email-input"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -65,13 +68,19 @@ const LoginPage = () => {
             <div className="login-input-lable">Password:</div>
             <input
               type="password"
+              data-testid="password-input"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="login-input"
             />
             {passwordError && <p style={{ color: "red" }}>{passwordError}</p>}
           </div>
-          <button className="login-button" type="submit" onClick={handleLogin}>
+          <button
+            className="login-button"
+            type="submit"
+            data-testid="login-button"
+            onClick={handleLogin}
+          >
             Login
           </button>
         </form>
@@ -80,4 +89,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default Login;

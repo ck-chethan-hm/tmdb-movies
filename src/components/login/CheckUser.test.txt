@@ -1,0 +1,45 @@
+// import { render, screen, waitFor } from "@testing-library/react";
+// import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+// import CheckUser from "../../middleware/CheckUser";
+// import Login from "./Login";
+// import HomePage from "../homePage/HomePage";
+
+// const TestWrapper = ({ userId, children }) => {
+//   if (userId) localStorage.setItem("User_ID", userId);
+//   else localStorage.removeItem("User_ID");
+
+//   return (
+//     <Router>
+//       <Routes>
+//         <Route path="/" element={<CheckUser>{children}</CheckUser>} />
+//         <Route path="/login" element={<Login />} />
+//       </Routes>
+//     </Router>
+//   );
+// };
+
+// describe("CheckUser Component", () => {
+//   it("should render children if userId is in localStorage", async () => {
+//     render(
+//       <TestWrapper userId="123">
+//         <HomePage />
+//       </TestWrapper>
+//     );
+
+//     await waitFor(() => {
+//       expect(screen.getByText("")).toBeInTheDocument();
+//     });
+//   });
+
+//   it("should redirect to LoginPage if userId is not in localStorage", async () => {
+//     render(
+//       <TestWrapper>
+//         <HomePage />
+//       </TestWrapper>
+//     );
+
+//     await waitFor(() => {
+//       expect(screen.getByText(/Login/i)).toBeInTheDocument();
+//     });
+//   });
+// });

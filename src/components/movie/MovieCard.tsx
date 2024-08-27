@@ -10,7 +10,7 @@ import { addFavorite, removeFavorite } from "../../store/favouriteSlice";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "../../store/store";
 
-interface MovieCardProp {
+export interface MovieCardProp {
   movie: MovieType;
 }
 
